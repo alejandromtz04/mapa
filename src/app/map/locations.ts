@@ -21,8 +21,8 @@ export const Atracaderos = [
     },
     {
         id: 3,
-        lat: 13.57458098128608, 
-        lng: -89.83767313206285,
+        lat: 13.574406413720588,
+        lng: -89.83758952417274,
         atracadero: 'Atracadero B3',
         description: 'Atracadero 3 del puerto de acajutla',
         popupHtml: '<b>Puerto de acajutla</b><br>Capital',
@@ -31,8 +31,8 @@ export const Atracaderos = [
     },
     {
         id: 4,
-        lat: 13.57545702644043, 
-        lng: -89.83889085499429,
+        lat: 13.575256386774484,
+        lng: -89.8388072471042,
         atracadero: 'Atracadero B4',
         description: 'Atracadero 1 del puerto de acajutla',
         popupHtml: '<b>Puerto de acajutla</b><br>Capital',
@@ -61,8 +61,8 @@ export const Atracaderos = [
     },
     {
         id: 7,
-        lat: 13.575915905976434,
-        lng: -89.84131020753412,
+        lat: 13.575626619511814,
+        lng: -89.8411836843141,
         atracadero: 'Atracadero C7',
         description: 'Atracadero 7 del puerto de acajutla',
         popupHtml: '<b>Puerto de acajutla</b><br>Capital',
@@ -81,8 +81,8 @@ export const Atracaderos = [
     },
     {
         id: 9,
-        lat: 13.577485475753335,
-        lng: -89.84207731933674,
+        lat: 13.577428074706702,
+        lng: -89.84200757993044,
         atracadero: 'Atracadero C8',
         description: 'Atracadero 8 del puerto de acajutla',
         popupHtml: '<b>Puerto de acajutla</b><br>Capital',

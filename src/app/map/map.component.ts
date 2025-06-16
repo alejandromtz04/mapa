@@ -1,19 +1,45 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { MapService } from '../services/map.service';
-import leaflet from 'leaflet'
+import { NgClass, NgFor } from '@angular/common';
 
 import { Atracaderos } from './locations';
 import { AtracaderosInterface } from '../interfaces/map-markers.interface';
 
+import { DataViewModule } from 'primeng/dataview';
+import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
+
+
 @Component({
   selector: 'app-map',
-  imports: [],
+  imports: [
+    DataViewModule,
+    ButtonModule,
+    TagModule,
+    NgClass,
+    NgFor
+  ],
   templateUrl: './map.component.html',
   styleUrl: './map.component.css'
 })
-export class MapComponent implements AfterViewInit{
+export class MapComponent implements OnInit, AfterViewInit {
 
-  constructor(private mapService: MapService) { }
+  atracaderosList!: AtracaderosInterface[];
+
+  constructor(
+    private readonly mapService: MapService
+  ) { }
+
+  ngOnInit(): void {
+      this.mapService.getAtracaderos().subscribe({
+        next: (data: AtracaderosInterface[]) => {
+          this.atracaderosList = data.slice(0,5);
+        },
+        error: (err) => {
+          console.error('Error handler fetching atracaderos: ', err);
+        }
+      });
+  }
 
   ngAfterViewInit(): void {
 
@@ -23,5 +49,19 @@ export class MapComponent implements AfterViewInit{
       this.mapService.addMarkers(Atracaderos as AtracaderosInterface[])
   }
 
+  goToMarker(item: AtracaderosInterface) {
+    this.mapService.setView(item.lat, item.lng, 17);
+  }
+
+  getSeverity (atracadero: AtracaderosInterface) {
+    switch (atracadero.disponibilidad) {
+      case true:
+        return 'success';
+      case false: 
+        return 'danger';
+      default:
+        return null;
+    }
+  };
  
 }
