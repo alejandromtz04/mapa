@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { AtracaderosInterface } from "../interfaces/map-markers.interface";
 import { Atracaderos } from "../map/locations";
 
-import leaflet from 'leaflet'
+import leaflet, { marker } from 'leaflet'
 import { Observable, of } from "rxjs";
 
 @Injectable({
@@ -34,21 +34,25 @@ export class MapService {
     // Add Markers inside the map
 
     addMarkers(locations: AtracaderosInterface[]): void {
-        if (!this.map) return;
+    if (!this.map) return;
 
-        const iconMark = leaflet.icon({
-            iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-            iconSize: [32,48],
-            iconAnchor: [16,32],
-            popupAnchor: [0,-32]
-        })
+    const iconMark = leaflet.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+        iconSize: [32, 48],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    });
 
-        locations.forEach(location => {
-            leaflet.marker([location.lat, location.lng], { icon: iconMark })
-                .addTo(this.map)
-                .bindPopup(`<b>${location.atracadero}</b><br>${location.description}`);
-        });
-    }
+    locations.forEach(location => {
+        const marker = leaflet
+            .marker([location.lat, location.lng], { icon: iconMark }) 
+            .addTo(this.map)
+            .bindPopup(`<b>${location.atracadero}</b><br>${location.description}`);
+
+        this.markers.push(marker); 
+    });
+}
+
 
     // Set view when i select atracadero from the list
 

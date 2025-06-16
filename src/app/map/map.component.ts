@@ -16,7 +16,6 @@ import { TagModule } from 'primeng/tag';
     DataViewModule,
     ButtonModule,
     TagModule,
-    NgClass,
     NgFor
   ],
   templateUrl: './map.component.html',
@@ -51,6 +50,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   goToMarker(item: AtracaderosInterface) {
     this.mapService.setView(item.lat, item.lng, 17);
+    this.mapService.openPopup(item.lat, item.lng)
   }
 
   getSeverity (atracadero: AtracaderosInterface) {
