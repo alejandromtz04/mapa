@@ -1,47 +1,40 @@
-<h1>Atracaderos</h1>
-
-<div class="flex gap-2">
-
+<h1 class="flex justify-content-center">Atracaderos</h1>
+<div class="flex gap-2 justify-content-end">
   <!-- View Atracaderos List -->
-<div class="flex-row mb-6 justify-content-center">
-  <div *ngFor="let item of atracaderosList" 
-       class="cursor-pointer border-1 surface-border border-round surface-card p-3 w-full sm:w-20rem hover:shadow-2 transition-all transition-duration-300">
-    
-    <div class="text-xl font-medium text-900 mb-3">{{item.atracadero}}</div>
 
-    <div class="flex justify-content-between align-items-center mb-4">
-      <p-tag [value]="item.disponibilidad ? 'Disponible' : 'No disponible'" 
-             [severity]="getSeverity(item)"
-             class="text-sm">
-      </p-tag>
+  <div class="flex-row mb-2 justify-content-center overflow-y-auto  max-w-30rem" style="height: 37rem;">
+
+
+    <div *ngFor="let item of atracaderosList"
+      class="border-round-2xl border-100 p-3 mb-3 w-full sm:w-20rem shadow-5 transition-all transition-duration-300">
+
+      <div class="text-xl font-medium text-900 mb-3">{{item.atracadero}}</div>
+
+      <div class="flex justify-content-between align-items-center mb-4">
+        <p-tag [value]="item.disponibilidad ? 'Disponible' : 'No disponible'" [severity]="'success'" class="text-sm">
+        </p-tag>
+      </div>
+
+      <!-- Rating and Button row -->
+      <div class="flex justify-content-between align-items-center">
+
+        <p-button class="p'button cursor-pointer" label="Ver ubicación" icon="pi pi-map-marker" [severity]="'contrast'"
+          (click)="goToMarker(item);" />
+
+      </div>
+
     </div>
-    
-    <!-- Rating and Button row -->
-    <div class="flex justify-content-between align-items-center">
-      
-      <p-button pButton 
-              type="button" 
-              label="Ver ubicación" 
-              icon="pi pi-map-marker" 
-              severity="contrast"
-              (click)="goToMarker(item);">
-      </p-button>
-    </div>
-    
   </div>
-</div>
 
   <!-- Map -->
 
-  <div id="map" style="
+  <div id="map" class="border-round-3xl"
+   style="
     width: 60vw; 
     height: 80vh; 
     max-width: 100%; 
     max-height: 100%; 
-    box-sizing: border-box; 
-
-
-
+    box-sizing: border-box;
   ">
   </div>
 

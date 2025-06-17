@@ -32,7 +32,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
       this.mapService.getAtracaderos().subscribe({
         next: (data: AtracaderosInterface[]) => {
-          this.atracaderosList = data.slice(0,5);
+          this.atracaderosList = data.slice(0,9);
         },
         error: (err) => {
           console.error('Error handler fetching atracaderos: ', err);
