@@ -1,8 +1,9 @@
 <h1 class="flex justify-content-center">Atracaderos</h1>
-<div class="flex gap-2 justify-content-end">
+<div class="flex lg: justify-content-center xl:justify-content-end flex-column md:flex-row gap-3">
   <!-- View Atracaderos List -->
 
-  <div class="flex-row mb-2 justify-content-center overflow-y-auto  max-w-30rem" style="height: 37rem;">
+  <div class="responsive flex md:flex-column gap-3 overflow-y-auto overflow-x-auto md:overflow-y-auto px-2 " 
+  style="scroll-snap-type: x mandatory;">
 
 
     <div *ngFor="let item of atracaderosList"
@@ -28,7 +29,7 @@
 
   <!-- Map -->
 
-  <div id="map" class="border-round-3xl"
+  <div id="map" class="border-round-3xl sm:max-w-40rem"
    style="
     width: 60vw; 
     height: 80vh; 
